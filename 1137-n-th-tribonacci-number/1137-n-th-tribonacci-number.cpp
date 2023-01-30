@@ -5,7 +5,7 @@ public:
         tr[0]=0;
         tr[1]=1;
         tr[2]=1;
-        for(int i=3;i<39;i++)
+        for(int i=3;i<n+1;i++)
         {
             tr[i]=tr[i-1]+tr[i-2]+tr[i-3];
         }
