@@ -19,7 +19,6 @@ class Solution{
             }
             else{
                 ind++;
-                // range[ind]=range[i];
             }
         }
         vector<int> ans(q,-1);
