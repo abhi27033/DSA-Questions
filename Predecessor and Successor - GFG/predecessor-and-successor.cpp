@@ -63,12 +63,10 @@ class Solution
             }
             if(i!=a.size()-1)
             {
-                // cout<<"hio";
                 int x=a[i]->key;
                 int y=a[i+1]->key;
                 if(x<key&&y>key)
                 {
-                //  cout<<x<<" "<<y<<" " <<key<<endl;
                 pre=a[i];
                 suc=a[i+1];
                 break;
