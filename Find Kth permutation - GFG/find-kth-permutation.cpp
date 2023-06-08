@@ -48,7 +48,6 @@ void next(vector<int>&c)
     else
     {
         int idx=(bin(c,c[i],i+1,n-1));
-        // cout<<i<<" "<<idx<<endl;
         int t=c[idx];
         c[idx]=c[i];
         c[i]=t;
@@ -62,13 +61,9 @@ void next(vector<int>&c)
         vector<int> q;
         for(int i=1;i<=n;i++)
         q.push_back(i);
-        // next(q);
         k--;
         while(k--)
         {
-        //     for(auto it:q)
-        // cout<<it<<" ";
-        // cout<<endl;
         next(q);
         }
         
@@ -76,7 +71,6 @@ void next(vector<int>&c)
         for(int i=0;i<n;i++)
         {
             char a=(((q[i])+'0'));
-            // cout<<a<<endl;
            ans+=a;
             
         }
