@@ -3,43 +3,74 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution {
-public:
-    void nextPermutation(string& s) {
-        int n = s.length();
-        int i = n - 2;
-        while (i >= 0 && s[i] >= s[i + 1]) {
-            i--;
-        }
-        if (i < 0) {
-            sort(s.begin(), s.end());
-        } else {
-            int j = n - 1;
-            while (j > i && s[j] <= s[i]) {
-                j--;
-            }
-            swap(s[i], s[j]);
-            reverse(s.begin() + i + 1, s.end());
-        }
+class Solution
+{
+	public:
+	int bin(string& ans,int ele,int l,int r)
+{
+   while(l<=r)
+   {
+       int mid=(l+r)/2;
+       if(ele<ans[mid])
+       l=mid+1;
+       else
+       r=mid-1;
+   }
+   return l-1;
+}
+void reverse(int l,int r,string& a)
+{
+    while(l<=r)
+    {
+        int t=a[l];
+        a[l]=a[r];
+        a[r]=t;
+        l++;
+        r--;
     }
-    
-    vector<string> find_permutation(string S) {
-        vector<string> permutations;
-        sort(S.begin(), S.end());  // Sort the string to ensure lexicographically sorted output
-        permutations.push_back(S);
-        
-        while (true) {
-            nextPermutation(S);
-            if (S == permutations[0]) {
-                break;
-            }
-            permutations.push_back(S);
-        }
-        
-        return permutations;
+}
+void next(string& c)
+{
+    int n=c.size();
+    int i=n-2;
+    while(i>=0&&c[i]>=c[i+1])
+    i--;
+    if(i<0)
+    {
+        sort(c.begin(),c.end());
     }
+    else
+    {
+        int idx=(bin(c,c[i],i+1,n-1));
+        int t=c[idx];
+        c[idx]=c[i];
+        c[i]=t;
+        reverse(i+1,n-1,c);
+        
+    }
+}
+		vector<string>find_permutation(string S)
+		{
+		    // Code here there
+		    vector<string> ans;
+		    int n=S.size();
+		    int f=1;
+		  //  for(int i=1;i<=n;i++)
+		  //  f*=i;
+		    sort(S.begin(),S.end());
+		     ans.push_back(S);
+		   while(1)
+		    {
+	          next(S);
+	       //   cout<<S<<endl;
+		      if(S==ans[0])
+		      break;
+		      ans.push_back(S);
+		       
+		    }
+		    return ans;
+		}
 };
-
 
 
 
