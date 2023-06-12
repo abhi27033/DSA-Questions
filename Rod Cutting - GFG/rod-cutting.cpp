@@ -8,27 +8,22 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-class Solution{
-  public:
-  int solve(int price[], int n,int q,vector<int>& dp)
-  {
-      int ans=0;
-      if(dp[q]!=-1)
-      return dp[q];
-      for(int i=0;i<n;i++)
-      {
-          if(q-i-1>=0)
-          {
-            int z=price[i]+solve(price,n,q-i-1,dp);
-            ans=max(ans,z);
-          }
-      }
-      return dp[q]=ans;
-  }
+class Solution {
+public:
     int cutRod(int price[], int n) {
-        //code here
-        vector<int> dp(10001,-1);
-        return solve(price,n,n,dp);
+        vector<int> dp(n + 1, 0); // dp[i] stores the maximum profit for a rod of length i
+
+        for (int i = 1; i <= n; i++) {
+            int maxProfit = 0;
+
+            for (int j = 0; j < i; j++) {
+                maxProfit = max(maxProfit, price[j] + dp[i - j - 1]);
+            }
+
+            dp[i] = maxProfit;
+        }
+
+        return dp[n];
     }
 };
 
