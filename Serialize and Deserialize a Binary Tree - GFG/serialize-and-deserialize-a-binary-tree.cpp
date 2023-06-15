@@ -108,9 +108,10 @@ public:
             return;
         }
 
-        ans.push_back(root->data);
+        
         solve(root->left, ans);
         solve(root->right, ans);
+        ans.push_back(root->data);
     }
 
     vector<int> serialize(Node* root) {
@@ -120,17 +121,18 @@ public:
     }
 
     Node* sol(vector<int>& a, int& i) {
-        if (i >= a.size() || a[i] == -1)
+        if (i<0 || a[i] == -1)
             return NULL;
 
         Node* r = new Node(a[i]);
-        r->left = sol(a, ++i);
-        r->right = sol(a, ++i);
+         r->right = sol(a, --i);
+        r->left = sol(a, --i);
+       
         return r;
     }
 
     Node* deSerialize(vector<int>& A) {
-        int index = 0;
+        int index = A.size()-1;
         return sol(A, index);
     }
 };
