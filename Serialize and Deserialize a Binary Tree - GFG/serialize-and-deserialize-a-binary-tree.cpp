@@ -107,8 +107,6 @@ public:
             ans.push_back(-1);
             return;
         }
-
-        
         solve(root->left, ans);
         solve(root->right, ans);
         ans.push_back(root->data);
@@ -120,7 +118,7 @@ public:
         return ans;
     }
 
-    Node* sol(vector<int>& a, int& i) {
+    Node* sol(vector<int>& a, int &i) {
         if (i<0 || a[i] == -1)
             return NULL;
 
@@ -133,6 +131,8 @@ public:
 
     Node* deSerialize(vector<int>& A) {
         int index = A.size()-1;
+        // for(auto it:A)
+        // cout<<it<<endl;
         return sol(A, index);
     }
 };
