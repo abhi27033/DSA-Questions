@@ -1,7 +1,11 @@
 # Queue Operations
 ## Easy
-<div class="problems_problem_content__Xm_eO"><p><em><span style="font-size: 18px;">Here, we will learn operations on queues.</span></em></p>
-<p><span style="font-size: 18px;">Given <strong>N</strong> integers, the task is to insert those elements in the queue. Also, given <strong>M</strong> integers, task is to find the frequency of each number in the Queue.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given <strong>N</strong> integers, the task is to insert those elements in the queue. Also, given <strong>M</strong> integers, the task is to find the frequency of each number in the Queue.<br><strong>Note:</strong></span></p>
+<ul>
+<li><span style="font-size: 18px;">insert() will be called N times by main().</span></li>
+<li><span style="font-size: 18px;"><span style="font-size: 18px;">findFrequency() will be called M times by main();</span></span></li>
+<li><span style="font-size: 18px;"><span style="font-size: 18px;">Where k is each element passing through respective function calls.</span></span></li>
+</ul>
 <p><strong><span style="font-size: 18px;">Example 1:</span></strong></p>
 <pre><span style="font-size: 18px;"><strong>Input:</strong>
 N = 8
