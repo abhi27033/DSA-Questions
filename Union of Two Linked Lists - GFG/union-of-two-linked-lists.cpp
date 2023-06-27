@@ -59,8 +59,10 @@ class Solution
            q=q->next;
         }
         q->next=NULL;
-        
-        return ans->next;
+        struct Node *t=ans;
+        ans=ans->next;
+        delete(t);
+        return ans;
     }
 };
 
