@@ -8,12 +8,6 @@ class Solution {
 public:
     int findK(int a[MAX][MAX], int n, int m, int k) {
         int t = 0;
-        int totalElements = n * m;
-        
-        // Validate if k is within the range of the array
-        if (k > totalElements)
-            return -1;  // Return an error value or handle it accordingly
-        
         while (1) {
             // Check if the array is square and we have reached the center element
             if (n == m && (n / 2) + 1 == t)
@@ -57,8 +51,6 @@ public:
             
             t++;
         }
-        
-        return -1;  // Return an error value or handle it accordingly
     }
 };
 
