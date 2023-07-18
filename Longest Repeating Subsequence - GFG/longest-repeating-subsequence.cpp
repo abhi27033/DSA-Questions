@@ -19,8 +19,7 @@ class Solution {
 // 	    return dp[i][j]=ans;
 // 	}
 		int LongestRepeatingSubsequence(string str){
-		    // Code here
-		    int i=0,j=0,n=str.size();
+		   int i=0,j=0,n=str.size();
 		   vector<vector<int>> dp(n+1,vector<int>(n+1,0));
 		   for(i=n-1;i>=0;i--)
 		   {
