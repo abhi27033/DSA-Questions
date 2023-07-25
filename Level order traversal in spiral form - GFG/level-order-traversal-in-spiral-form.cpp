@@ -132,32 +132,27 @@ vector<int> findSpiral(Node *root)
     //Your code here
     queue<Node*> q;
     q.push(root);
+    int l=1;
     vector<int> ans;
-    if(root==NULL)
-    return ans;
-    int c=0;
     while(!q.empty())
     {
+        vector<int> w;
         int s=q.size();
-        vector<int> a;
-        c++;
         while(s--)
         {
-            Node*t=q.front();
+            Node* t=q.front();
+            w.push_back(t->data);
             q.pop();
-            a.push_back(t->data);
             if(t->left)
             q.push(t->left);
             if(t->right)
             q.push(t->right);
         }
-        if(c%2==1)
-        {
-            reverse(a.begin(),a.end());
-        
-        }
-        for(auto it:a)
+        if(l%2==1)
+        reverse(w.begin(),w.end());
+        for(auto it:w)
         ans.push_back(it);
+        l++;
     }
     return ans;
 }
