@@ -33,9 +33,33 @@ class Solution
 	        solve(adj,i,vis,s,flg);
 	    }
 	    int n=s.top();
+	    stack<int> sk;
 	    fill(vis.begin(),vis.end(),-1);
-	    int c=0;
-	    solve(adj,n,vis,s,c);
+	    sk.push(n);
+	    int c=1;
+	   // cout<<n<<endl;
+	   // for(auto it:vis)
+	   // cout<<it;
+	   vis[n]=1;
+	    while(sk.size())
+	    {
+	        int y=sk.top();
+	        sk.pop();
+	        
+	       // cout<<y<<" ";
+	        for(auto it:adj[y])
+	        {
+	           // cout<<it<<" ";
+    	        if(vis[it]==-1)
+    	        {
+    	            vis[it]=1;
+    	        c++;
+    	        sk.push(it);
+    	        }
+	        }
+	       // cout<<endl;
+	    }
+	   // cout<<c<<endl;
 	    return c==V?n:-1;
 	}
 
