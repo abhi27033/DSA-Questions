@@ -37,19 +37,13 @@ class Solution
 	    fill(vis.begin(),vis.end(),-1);
 	    sk.push(n);
 	    int c=1;
-	   // cout<<n<<endl;
-	   // for(auto it:vis)
-	   // cout<<it;
 	   vis[n]=1;
 	    while(sk.size())
 	    {
 	        int y=sk.top();
 	        sk.pop();
-	        
-	       // cout<<y<<" ";
 	        for(auto it:adj[y])
 	        {
-	           // cout<<it<<" ";
     	        if(vis[it]==-1)
     	        {
     	            vis[it]=1;
@@ -57,9 +51,7 @@ class Solution
     	        sk.push(it);
     	        }
 	        }
-	       // cout<<endl;
 	    }
-	   // cout<<c<<endl;
 	    return c==V?n:-1;
 	}
 
