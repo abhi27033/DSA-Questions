@@ -32,7 +32,7 @@ class Solution{
         Node* LCA(Node *root, int n1, int n2)
         {
             // code here
-            solve(root,n1,n2);
+            return solve(root,n1,n2);
         }
 
 };
