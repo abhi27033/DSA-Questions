@@ -10,20 +10,14 @@ using namespace std;
 class Solution{
 public:
     string findLargest(int N, int S){
-        // code here
         int q=S/9;
         int r=S%9;
         if(S==0)
-        {
             if(N==1)
             return "0";
             else 
             return "-1";
-        }
-        // cout<<r<<endl;
-        int x=0;
-        if(r!=0)
-        x++;
+        int x=(r!=0)?1:0;
         if(x+q>N)
         return "-1";
         string ans;
