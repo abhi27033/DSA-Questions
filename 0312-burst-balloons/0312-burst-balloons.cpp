@@ -26,7 +26,25 @@ public:
         for(auto it:nums)
             t.push_back(it);
         t.push_back(1);
-        dp.resize(t.size()+1,vector<int>(t.size()+1,-1));
-        return solve(t,1,nums.size());
+        dp.resize(t.size()+1,vector<int>(t.size()+1,0));
+        // return solve(t,1,nums.size());
+        for(int l=nums.size();l>=1;l--)
+        {
+            for(int h=l;h<=nums.size();h++)
+            {
+                int ans=INT_MIN;
+                for(int k=l;k<=h;k++)
+                {
+                    int test=t[k];
+                    test*=t[h+1];
+                    test*=t[l-1];
+                    test+=dp[l][k-1];
+                    test+=dp[k+1][h];
+                    ans=max(ans,test);
+                }
+                dp[l][h]=ans;
+            }
+        }
+        return dp[1][nums.size()];
     }
 };
