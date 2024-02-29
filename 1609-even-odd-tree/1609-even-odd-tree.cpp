@@ -26,21 +26,12 @@ public:
                 if(!(l&1))
                 {
                  if(!(t->val&1)||(p>=t->val&&p!=-1))
-                 {
-                     // cout<<l<<" "<<t->val<<" "<<p<<endl;
                      return false;
-                 }
-                p=t->val;
                 }
                 else
-                {
                     if(t->val&1||(p<=t->val&&p!=-1))
-                    {
-                        // cout<<l<<" "<<t->val<<" "<<p<<endl;
                         return false;
-                    }
-                    p=t->val;
-                }
+                p=t->val;
                 if(t->left)
                         q.push(t->left);
                 if(t->right)
