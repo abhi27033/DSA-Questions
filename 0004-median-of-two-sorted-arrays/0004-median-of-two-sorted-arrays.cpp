@@ -15,7 +15,6 @@ public:
             int a=INT_MIN,b=INT_MIN;
             if(mid>0)a=nums1[mid-1];
             if(m1>0)b=nums2[m1-1];
-            // cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
             if(a<=d&&b<=c)
             {
                 if((n+m)&1)
