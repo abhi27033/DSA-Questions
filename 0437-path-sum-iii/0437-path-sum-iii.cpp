@@ -22,7 +22,6 @@ public:
         long long ans=0,f=0;
         solve(root,1LL*targetSum,f);
         ans+=f;
-        // cout<<root->val<<" "<<f<<endl;
         ans+=pathSum(root->left,targetSum);
         ans+=pathSum(root->right,targetSum);
         return ans;
