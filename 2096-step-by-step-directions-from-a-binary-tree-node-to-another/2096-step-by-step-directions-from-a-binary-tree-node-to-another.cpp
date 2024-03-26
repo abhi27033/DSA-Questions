@@ -28,7 +28,6 @@ public:
         if(!r)return;
         if(r->val==f)
         {
-            // cout<<a<<endl;
             f1=a;
             return;
         }
@@ -42,11 +41,9 @@ public:
         if(!r)return;
         if(r->val==f)
         {
-            // cout<<b<<endl;
             ff=b;
             return;
         }
-        // cout<<f<<endl;
         b+='L';
         s2(r->left,f,b);
         b.pop_back();
@@ -56,16 +53,10 @@ public:
     }
     string getDirections(TreeNode* root, int startValue, int destValue) {
         TreeNode* temp=solve(root,startValue,destValue);
-        string a="",b="",ans="";
+        string a="",b="";
         TreeNode* x=temp;
-        cout<<x->val<<endl;
         s1(x,startValue,a);
-        // cout<<f1<<endl;
-        b="";
-        ans+=f1;
         s2(temp,destValue,b);
-        // cout<<ff<<endl;
-        ans+=ff;
-        return ans;    
+        return f1+ff;    
         }
 };
