@@ -17,7 +17,6 @@ public:
         if(!r)return 0;
         int h1=1+solve(r->left);
         int h2=1+solve(r->right);
-        // cout<<h1<<" "<<h2<<endl;
         ans=max(ans,h1+h2-2);
         return max(h1,h2);
     }
