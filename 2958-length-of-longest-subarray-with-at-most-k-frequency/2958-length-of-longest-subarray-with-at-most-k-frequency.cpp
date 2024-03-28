@@ -6,7 +6,7 @@ public:
         for(int i=0;i<nums.size();i++)
         {
             mp[nums[i]]++;
-            while(j<=i&&mp[nums[i]]>k)
+            while(mp[nums[i]]>k)
             {
                 mp[nums[j]]--;
                 if(mp[nums[j]]==0)
