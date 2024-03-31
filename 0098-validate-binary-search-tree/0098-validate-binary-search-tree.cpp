@@ -16,10 +16,11 @@ public:
         if(!r)return true;
         long d=r->val;
         if(d<=l||d>=h)return false;
-        return solve(r->left,l,min(h,d))&&solve(r->right,max(l,d),h);
+        bool a=solve(r->left,l,d);
+        bool b=solve(r->right,d,h);
+        return a&&b;
     }
     bool isValidBST(TreeNode* root) {
-        if(!root)return true;
-        return solve(root->left,LONG_MIN,root->val)&&solve(root->right,root->val,LONG_MAX);
+        return solve(root,LONG_MIN,LONG_MAX);
     }
 };
