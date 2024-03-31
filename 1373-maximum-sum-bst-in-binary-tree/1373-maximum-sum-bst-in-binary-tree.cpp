@@ -27,10 +27,8 @@ public:
         if(!r)return dsa();
         dsa l=solve(r->left);
         dsa rr=solve(r->right);
-        // cout<<r->val<<endl;
         if(l.isbst&&rr.isbst&&l.ma<r->val&&rr.mi>r->val)
         {
-            // cout<<l.su<<" "<<r.su<<endl;
             dsa ans;
             ans.isbst=true;
             ans.mi=min(l.mi,r->val);
