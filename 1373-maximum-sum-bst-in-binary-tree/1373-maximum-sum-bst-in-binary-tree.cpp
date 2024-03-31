@@ -35,7 +35,6 @@ public:
             ans.isbst=true;
             ans.mi=min(l.mi,r->val);
             ans.ma=max(rr.ma,r->val);
-            
             ans.su=l.su+rr.su+r->val;
             fi=max({fi,l.su,rr.su,ans.su});
             return ans;
