@@ -4,7 +4,7 @@ public:
     {
         if(x==w.size())
             return true;
-        if(i<0||j<0||i>=board.size()||j>=board[0].size()||w[x]!=board[i][j]||board[i][j]=='&')
+        if(i<0||j<0||i>=board.size()||j>=board[0].size()||w[x]!=board[i][j])
             return false;
         char t=board[i][j];
         board[i][j]='&';
