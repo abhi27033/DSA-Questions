@@ -7,7 +7,6 @@ public:
             if(s[i]=='a')
                 continue;
             int t=s[i]-'a';
-            // cout<<k<<endl;
             if(k>=min(26-t,t))
             {
                 k-=min(26-t,t);
@@ -19,8 +18,6 @@ public:
                     s[i]-=k;
                return s;
             }
-            if(k==0)
-                return s;
         }
         return s;
     }
