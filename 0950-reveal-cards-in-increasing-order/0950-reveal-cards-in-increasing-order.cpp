@@ -8,8 +8,6 @@ public:
         while(x<n)
         {
             i=0;
-            // cout<<i<<" "<<flg<<endl;
-            //first empty cell
             while(i<n)
             {
                 if(ans[i]==-1)
@@ -25,9 +23,6 @@ public:
                 }
                  i++;
             }
-            for(auto it:ans)
-                cout<<it<<" ";
-            cout<<endl;
         }
         return ans;
     }
