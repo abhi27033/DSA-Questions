@@ -10,56 +10,31 @@
  */
 class Solution {
 public:
+    ListNode* reorderLis(ListNode* head) {
+     if(!head||!head->next||!head->next->next)
+            return head;
+        ListNode* prev=NULL,*t=head;
+        while(t->next)
+        {
+            prev=t;
+            t=t->next;
+        }
+        ListNode* ans=head;
+        ListNode* fir=head->next;
+        ans->next=t;
+        // cout<<prev->val<<endl;
+        prev->next=NULL;
+        // ListNode* temp=fir;
+        // while(temp)
+        // {
+        //     cout<<temp->val<<" ";
+        //     temp=temp->next;
+        // }
+        // return fir;
+        t->next=reorderLis(fir);
+        return ans;
+    }
     void reorderList(ListNode* head) {
-        if(!head->next)return;
-      ListNode* slow=head,*fast=head,*pre=NULL;
-        while(fast&&fast->next)
-        {
-            pre=slow;
-            slow=slow->next;
-            fast=fast->next->next;
-        }
-        if(pre)pre->next=NULL;
-        ListNode* prev=NULL,*curr=slow;
-        while(slow)
-        {
-            ListNode* t=slow->next;
-            slow->next=prev;
-            prev=slow;
-            slow=t;
-        }
-        //now merge prev and head
-        ListNode* ans=new ListNode(-1);
-        int flg=1;
-        while(prev&&head)
-        {
-            if(flg)
-            {
-                ans->next=head;
-                ans=ans->next;
-                head=head->next;
-                flg=0;
-            }
-            else
-            {
-                ans->next=prev;
-                ans=ans->next;
-                prev=prev->next;
-                flg=1;
-            }
-        }
-        while(prev)
-        {
-            ans->next=prev;
-            ans=ans->next;
-            prev=prev->next;
-        }
-        while(head)
-        {
-            ans->next=head;
-            ans=ans->next;
-            head=head->next;
-        }
-        
+       head=reorderLis(head);
     }
 };
