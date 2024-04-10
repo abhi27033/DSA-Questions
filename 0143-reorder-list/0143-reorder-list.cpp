@@ -22,15 +22,7 @@ public:
         ListNode* ans=head;
         ListNode* fir=head->next;
         ans->next=t;
-        // cout<<prev->val<<endl;
         prev->next=NULL;
-        // ListNode* temp=fir;
-        // while(temp)
-        // {
-        //     cout<<temp->val<<" ";
-        //     temp=temp->next;
-        // }
-        // return fir;
         t->next=reorderLis(fir);
         return ans;
     }
