@@ -13,7 +13,6 @@ public:
                 ans+=(i-it-1);
             }
             mp[x].push_back(i);
-            cout<<i<<" "<<ans<<endl;
         }
     
         return ans;
