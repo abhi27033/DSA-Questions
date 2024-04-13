@@ -1,29 +1,29 @@
 class Solution {
 public:
     vector<int> minimumTime(int n, vector<vector<int>>& edges, vector<int>& disappear) {
-        vector<vector<pair<int,int>>> adj(n);
-        for(auto it:edges)
-        {
-            adj[it[0]].push_back({it[1],it[2]});
-            adj[it[1]].push_back({it[0],it[2]});
+        vector<pair<int,int>> adj[n];
+        vector<int> dis(n,INT_MAX);
+        for(int i=0;i<edges.size();i++){
+             adj[edges[i][0]].push_back({edges[i][1],edges[i][2]});
+             adj[edges[i][1]].push_back({edges[i][0],edges[i][2]});
         }
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-        vector<int> dis(n,-1);
+        priority_queue<pair<long long,long long>,vector<pair<long long,long long>>,greater<pair<long long,long long>>> pq;
         pq.push({0,0});
-        while(pq.size())
-        {
-            auto it=pq.top();
-            int node=it.second;
+        dis[0]=0;
+        while(!pq.empty()){
+            int f=pq.top().second;
+            int d=pq.top().first;
             pq.pop();
-            if(dis[node]!=-1)continue;
-            dis[node]=it.first;
-            for(auto a:adj[node])
-            {
-                if(dis[a.first]==-1&&disappear[a.first]>it.first+a.second)
-                {
-                    pq.push({it.first+a.second,a.first});
+            if(d>dis[f]) continue;
+            for(auto x:adj[f]){
+                if(dis[x.first]>=dis[f]+x.second && disappear[x.first]>dis[f]+x.second){
+                    dis[x.first]=dis[f]+x.second;
+                    pq.push({dis[x.first],x.first});
                 }
             }
+        }
+        for(int i=0;i<n;i++){
+            if(dis[i]>=disappear[i]) dis[i]=-1;
         }
         return dis;
     }
