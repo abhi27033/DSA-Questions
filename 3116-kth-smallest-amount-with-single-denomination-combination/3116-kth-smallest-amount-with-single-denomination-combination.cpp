@@ -51,14 +51,14 @@ public:
             long long mid = left + (right - left) / 2;
             long long count = countS(coins, mid);
             // cout<<count<<" " <<mid<<endl;
+            if(count==k)ans=mid;
             if (count < k) {
                 left = mid + 1;
             } else {
-                ans=right;
                 right = mid - 1;
             }
         }
 
-        return left;
+        return ans;
     }
 };
