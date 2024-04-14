@@ -19,26 +19,17 @@ public:
             for(int j=0;j<m;j++)
             {
                 if((i==0||j==0||i==n-1||j==m-1)&&board[i][j]=='O')
-                {
-                    // cout<<i<<" "<<j<<endl;
                     dfs(board,i,j,vis,'&');
-                    for(auto it:board)
-                    {
-                        for(auto itt:it)
-                            cout<<itt<<" ";
-                        cout<<endl;
-                    }
-                }
             }
         }
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
             {
+                if(board[i][j]=='O')
+                    board[i][j]='X';
                 if(board[i][j]=='&')
                     board[i][j]='O';
-                else if(board[i][j]=='O')
-                    board[i][j]='X';
             }
         }
     }
