@@ -20,8 +20,9 @@ public:
 //             count += amount / it;
 //         }
 // cout<<count<<endl;
-        int n = coins.size();
-        for (long long mask = 1; mask < (1 << n); ++mask) {
+        long long n = coins.size();
+        long long f=pow(2,n);
+        for (long long mask = 1; mask < f; ++mask) {
             long long f = 1;
             long long cnt = 0;
             for (long long i = 0; i < n; ++i) {
