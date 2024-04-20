@@ -1,40 +1,40 @@
 class Solution {
 public:
-bool checkCycle(vector<vector<int>>& adj, vector<int>& vis, int node) {
-    if (vis[node] == 2) 
-    {
-        return true;  // Cycle detected
-    }
-    if (vis[node] == 0) {
-        vis[node] = 2;
-        for (auto it : adj[node]) {
-            if (checkCycle(adj, vis, it)) {
-                return true;
-            }
+    bool canFinish(int n, vector<vector<int>>& p) {
+        vector<int> indeg(n,0);
+        vector<vector<int>> adj(n);
+        for(auto it:p)
+        {
+            indeg[it[0]]++;
+            adj[it[1]].push_back(it[0]);
         }
-    }
-    vis[node] = 1;  // Reset visited status
-    return false;
-}
-
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        vector<vector<int>> adj(numCourses);
-        int n=numCourses;
-        if(prerequisites.size()==0)
-        return 1;
-        for(auto it:prerequisites)
-        adj[it[1]].push_back(it[0]);
-        bool x=false;
-        vector<int> vis(n,0);
+        queue<int> q;
+        vector<int> vis(n,-1);
         for(int i=0;i<n;i++)
         {
-            
-            if(vis[i]==0)
+            if(indeg[i]==0)
             {
-                bool z=checkCycle(adj,vis,i);
-                x|=z;
+                q.push(i);
+                vis[i]=1;
             }
         }
-        return !x;
+        while(q.size())
+        {
+            int t=q.front();
+            q.pop();
+            for(auto it:adj[t])
+            {
+                indeg[it]--;
+                if(indeg[it]==0)
+                {
+                    q.push(it);
+                    vis[it]=1;
+                }
+            }
+            
+        }
+        for(auto it:vis)
+            if(it==-1)return false;
+        return true;
     }
 };
