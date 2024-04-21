@@ -21,9 +21,6 @@ public:
                 vis[i]=1;
             }
         }
-        
-        // for(int i=0;i<n;i++)
-        //     c[i][colors[i]-'a']++;
         int ans=0;
         while(q.size())
         {
@@ -32,7 +29,6 @@ public:
             int ma=0;
             for(auto it:c[t])
                 ma=max(ma,it);
-            cout<<t<<" "<<ma<<endl;
             ans=max(ans,ma);
             for(auto it:adj[t])
             {
