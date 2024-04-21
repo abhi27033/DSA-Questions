@@ -30,7 +30,6 @@ public:
                         ans=min(ans,dist[it]+dist[node]+1);
                 }
             }
-            cout<<ans<<endl;
         }
         return ans==INT_MAX?-1:ans;
     }
