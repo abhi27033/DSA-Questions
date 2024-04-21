@@ -11,17 +11,19 @@ public:
         }
         queue<int> q;
         vector<int> vis(n,-1);
+        vector<vector<int>> c(n,vector<int>(26,0));
         for(int i=0;i<n;i++)
         {
             if(indeg[i]==0)
             {
+                c[i][colors[i]-'a']++;
                 q.push(i);
                 vis[i]=1;
             }
         }
-        vector<vector<int>> c(n,vector<int>(26,0));
-        for(int i=0;i<n;i++)
-            c[i][colors[i]-'a']++;
+        
+        // for(int i=0;i<n;i++)
+        //     c[i][colors[i]-'a']++;
         int ans=0;
         while(q.size())
         {
