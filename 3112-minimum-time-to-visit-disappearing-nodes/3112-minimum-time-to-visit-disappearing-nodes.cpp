@@ -18,7 +18,7 @@ public:
             pq.pop();
             int d=it.first;
             int node=it.second;
-            if(disappear[node]<=d||di[node]<d)continue;
+            if(di[node]<d)continue;
             for(auto itt:adj[node])
             {
                 if(disappear[itt.first]>d+itt.second&&di[itt.first]>di[node]+itt.second)
