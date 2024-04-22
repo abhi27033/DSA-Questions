@@ -10,6 +10,7 @@ public:
         }
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
         vector<int> di(n,INT_MAX);
+        vector<int> vis(n, -1);
         di[0]=0;
         pq.push({0,0});
         while(pq.size())
@@ -18,7 +19,9 @@ public:
             pq.pop();
             int d=it.first;
             int node=it.second;
-            if(di[node]<d)continue;
+            if( vis[node]==1)
+                continue;
+            vis[node] = 1;
             for(auto itt:adj[node])
             {
                 if(disappear[itt.first]>d+itt.second&&di[itt.first]>di[node]+itt.second)
