@@ -6,9 +6,9 @@ public:
         while(i<b.size())
         {
             if(j==a.size())return false;
-            long long hpos=a[j++];
-            long long lpos=hpos-r;
-            long long rpos=hpos+r;
+            int hpos=a[j++];
+            int lpos=hpos-r;
+            int rpos=hpos+r;
             while(i<b.size()&&b[i]>=lpos&&b[i]<=rpos)
                 i++;
         }
@@ -18,11 +18,10 @@ public:
         int n=houses.size();
         sort(houses.begin(),houses.end());
         sort(heaters.begin(),heaters.end());
-        // ispossible(heaters,houses,498);
         long long l=0,ans=-1,h=INT_MAX;
         while(l<=h)
         {
-            long long m=l+(h-l)/2;
+            int m=l+(h-l)/2;
             if(ispossible(heaters,houses,m))
             {
                 ans=m;
