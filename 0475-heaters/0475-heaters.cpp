@@ -19,7 +19,7 @@ public:
         sort(houses.begin(),houses.end());
         sort(heaters.begin(),heaters.end());
         // ispossible(heaters,houses,498);
-        long long l=0,ans=-1,h=LONG_MAX;
+        long long l=0,ans=-1,h=INT_MAX;
         while(l<=h)
         {
             long long m=l+(h-l)/2;
