@@ -1,15 +1,30 @@
 class Solution {
 public:
-    int longestIdealString(string& s, int k) {
-        int seq[26]={0};// max len of seq ending at char(i+'a')
-        int ans=0;
-        for(char c: s){
-            int i=c-'a';
-            int j0=max(0, i-k),  j1=min(i+k, 25);
-            for(int j=j0; j<=j1; j++)
-                seq[i]=max(seq[i], seq[j]);//longest seq ending at char(j+'a')
-            seq[i]++;//Put c to the tail
+    vector<vector<int>> dp;
+    // int solve(string& s,int idx,int pidx,int& k)
+    // {
+    //     if(idx>=s.size())return 0;
+    //     if(dp[idx][pidx+1]!=-1)return dp[idx][pidx+1];
+    //     int a=0,b=0;
+    //     if(pidx==-1||abs(s[pidx]-s[idx])<=k)
+    //         a=1+solve(s,idx+1,idx,k);
+    //     b=solve(s,idx+1,pidx,k);
+    //     return dp[idx][pidx+1]=max(a,b);
+    // }
+    int longestIdealString(string s, int k) {
+        vector<int> mp(26,0);
+        for(int i=0;i<s.size();i++)
+        {
+            char ch=s[i];
+            int x=ch-'a';
+            int c=0;
+            for(int j=max(x-k,0);j<=min(x+k,25);j++)
+            c=max(c,mp[j]);
+            mp[x]=c+1;
         }
-        return *max_element(seq, seq+26);   
+        int ans=INT_MIN;
+        for(auto it:mp)
+            ans=max(ans,it);
+        return ans;
     }
 };
