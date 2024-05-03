@@ -50,7 +50,7 @@ public:
             while(j<m&&version2[j]!='.')
                 ch1+=version2[j++];
             int x=comp(ch,ch1);
-            cout<<x<<endl;
+            // cout<<x<<endl;
             if(x==1||x==-1)return x;
             i++;
             j++;
