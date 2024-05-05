@@ -13,10 +13,8 @@ public:
         int n=obstacleGrid[0].size();
         dp.resize(m+1,vector<long long>(n+1,0));
         // return solve(0,0,m,n,obstacleGrid);
-        if(obstacleGrid[m-1][n-1]==0)
+        if(obstacleGrid[m-1][n-1]==1)return 0;
         dp[m-1][n-1]=1;
-        else
-            return 0;
         for(int i=m-1;i>=0;i--)
         {
             for(int j=n-1;j>=0;j--)
