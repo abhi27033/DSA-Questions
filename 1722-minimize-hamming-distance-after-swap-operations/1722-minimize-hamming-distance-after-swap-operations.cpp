@@ -1,11 +1,6 @@
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-using namespace std;
-
 class DSU {
     vector<int> par, rank;
-public:
+    public:
     DSU(int n) {
         par.resize(n, -1);
         rank.resize(n, 1);
@@ -31,7 +26,6 @@ public:
         return true;
     }
 };
-
 class Solution {
 public:
     int minimumHammingDistance(vector<int>& source, vector<int>& target, vector<vector<int>>& allowedSwaps) {
