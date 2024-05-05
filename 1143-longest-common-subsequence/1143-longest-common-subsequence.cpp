@@ -10,18 +10,32 @@ public:
     // }
     int longestCommonSubsequence(string text1, string text2) {
         int n=text1.size(),m=text2.size();
-        dp.resize(n+1,vector<int>(m+1,0));
+        // dp.resize(n+1,vector<int>(m+1,0));
         // return solve(text1,text2,0,0);
+        // for(int i=n-1;i>=0;i--)
+        // {
+        //     for(int j=m-1;j>=0;j--)
+        //     {
+        //         if(text1[i]==text2[j])
+        //         dp[i][j]=1+dp[i+1][j+1];
+        //         else
+        //         dp[i][j]=max(dp[i+1][j],dp[i][j+1]);
+        //     }
+        // }
+        // return dp[0][0];
+        vector<int> pdp(m+1,0);
         for(int i=n-1;i>=0;i--)
         {
+            vector<int> dp(m+1,0);
             for(int j=m-1;j>=0;j--)
             {
                 if(text1[i]==text2[j])
-                dp[i][j]=1+dp[i+1][j+1];
+                dp[j]=1+pdp[j+1];
                 else
-                dp[i][j]=max(dp[i+1][j],dp[i][j+1]);
+                dp[j]=max(pdp[j],dp[j+1]);
             }
+            pdp=dp;
         }
-        return dp[0][0];
+        return pdp[0];
     }
 };
