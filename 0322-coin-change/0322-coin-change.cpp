@@ -12,7 +12,25 @@ public:
     }
     int coinChange(vector<int>& coins, int amount) {
         dp.resize(coins.size()+1,vector<int>(amount+1,-1));
-        int ans= solve(coins,0,amount);
+        // int ans= solve(coins,0,amount);
+        // if(ans>=1e7)return -1;
+        // return ans;
+        int n=coins.size();
+        for(int i=0;i<=n;i++)
+            dp[i][0]=0;
+        for(int i=n-1;i>=0;i--)
+        {
+            for(int amt=1;amt<=amount;amt++)
+            {
+                int pick=1e7,npick=1e7;
+                if(amt-coins[i]>=0)
+                pick=1+dp[i][amt-coins[i]];
+                if(i+1<n)
+                npick=dp[i+1][amt];
+                dp[i][amt]=min(pick,npick);
+            }
+        }
+        int ans=dp[0][amount];
         if(ans>=1e7)return -1;
         return ans;
     }
