@@ -1,7 +1,7 @@
 class Solution {
 public:
-    vector<int> dp;
-    int glans=1;
+    // vector<int> dp;
+    // int glans=1;
     // int solve(vector<int>& ar,int idx)
     // {
     //     if(idx>=ar.size())return 0;
