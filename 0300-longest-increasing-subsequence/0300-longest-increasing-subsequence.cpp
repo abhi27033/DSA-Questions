@@ -18,21 +18,33 @@ public:
     //     return dp[idx]=ans;
     // }
     int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-        dp.resize(n+1,1);
+        // int n=nums.size();
+        // dp.resize(n+1,1);
         // solve(nums,0);
-        for(int i=n-1;i>=0;i--)
+        // for(int i=n-1;i>=0;i--)
+        // {
+        //     int ans=1;
+        //     for(int j=i+1;j<n;j++)
+        //     {
+        //         if(nums[j]>nums[i])
+        //             ans=max(ans,1+dp[j]);
+        //     }
+        //     glans=max(glans,ans);
+        //     glans=max(glans,dp[i+1]);
+        //     dp[i]=ans;
+        // }
+        // return glans;
+        vector<int> ans;
+        for(auto it:nums)
         {
-            int ans=1;
-            for(int j=i+1;j<n;j++)
+            if(ans.size()==0||ans[ans.size()-1]<it)
+                ans.push_back(it);
+            else
             {
-                if(nums[j]>nums[i])
-                    ans=max(ans,1+dp[j]);
+                auto lb=lower_bound(ans.begin(),ans.end(),it);
+                *lb=it;
             }
-            glans=max(glans,ans);
-            glans=max(glans,dp[i+1]);
-            dp[i]=ans;
         }
-        return glans;
+        return ans.size();
     }
 };
