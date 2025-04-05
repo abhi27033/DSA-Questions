@@ -6,13 +6,13 @@ public:
         oor|=it;
         int n=nums.size();
         long long q=(1<<(n-1)),ans=0;
-        int i=0;
-        while(oor)
-        {
-            ans+=(1<<i)*(oor&1)*q;
-            i++;
-            oor>>=1;
-        }
-        return ans;
+        // int i=0;
+        // while(oor)
+        // {
+        //     ans+=(1<<i)*(oor&1)*q;
+        //     i++;
+        //     oor>>=1;
+        // }
+        return oor*q;
     }
 };
