@@ -14,6 +14,7 @@ public:
         //     oor>>=1;
         // }
         // https://codeforces.com/blog/entry/112866
+        // https://codeforces.com/contest/1614/problem/C
         return oor*q;
     }
 };
