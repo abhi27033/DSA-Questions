@@ -13,6 +13,7 @@ public:
         //     i++;
         //     oor>>=1;
         // }
+        // https://codeforces.com/blog/entry/112866
         return oor*q;
     }
 };
