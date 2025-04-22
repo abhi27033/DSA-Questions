@@ -13,7 +13,6 @@ class Solution {
 public:
     int N, maxVal;
     vector<long long> fact, invFact;
-    // sparse memo: memo[k][val] = rec(k,val)
     unordered_map<int, unordered_map<int,int>> memo;
 
     // Precompute factorials and inverse factorials up to n
