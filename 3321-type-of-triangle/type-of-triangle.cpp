@@ -1,0 +1,7 @@
+class Solution {
+public:
+    string triangleType(vector<int>& nums) {
+        if(nums[0]+nums[1]<=nums[2]||nums[1]+nums[2]<=nums[0]||nums[2]+nums[0]<=nums[1])return "none";
+        return ((nums[0]==nums[1]&&nums[1]==nums[2])?"equilateral":((nums[0]!=nums[1]&&nums[1]!=nums[2]&&nums[0]!=nums[2])?"scalene":"isosceles"));
+    }
+};
