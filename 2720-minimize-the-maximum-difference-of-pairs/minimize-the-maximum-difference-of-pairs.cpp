@@ -14,11 +14,10 @@ public:
             }
             if(k>=p){
                 h=m-1;
-                // if(k==p)
-                // ans=max(ans,m);
+                ans=m;
             }
             else l=m+1;
         }
-        return h+1;
+        return ans;
     }
 };
