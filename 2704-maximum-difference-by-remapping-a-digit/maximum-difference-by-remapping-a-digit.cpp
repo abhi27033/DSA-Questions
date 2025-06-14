@@ -1,23 +1,23 @@
 class Solution {
 public:
     int minMaxDifference(int num) {
-        vector<int> ar;
         string n=to_string(num);
-        unordered_set<char> digits;
-        int ma=INT_MIN,mi=INT_MAX;
-        for(auto it:n)digits.insert(it);
-        for(auto it:digits){
-            for(char i='0';i<='9';i++){
-                string temp=n;
-                for(auto& itt:temp){
-                    if(itt==it)
-                    itt=i;
-                }
-                int t=stoi(temp);
-                ma=max(ma,t);
-                mi=min(mi,t);
-            }
+        string ma=n;
+        int d=-1;
+        for(auto& it:ma){
+            if(it!='9'&&d==-1)
+                d=it;
+            if(it==d)
+            it='9';
         }
-        return ma-mi;
+        string mi=n;
+        char q=mi[0];
+        for(auto& it:mi){
+            if(it==q)
+            it='0';
+        }
+        int maa=stoi(ma);
+        int mii=stoi(mi);
+        return maa-mii;
     }
 };
