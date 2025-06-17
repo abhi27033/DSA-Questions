@@ -6,9 +6,15 @@ long long MOD=1e9+7;
         while(pow)
         {
             if(pow&1)
+            {
                 ans=(ans%MOD*base%MOD)%MOD;
-            base=((base%MOD)*(base%MOD))%MOD;
-            pow>>=1LL;
+                pow--;
+            }
+            else
+            {
+                base=((base%MOD)*(base%MOD))%MOD;
+                pow>>=1LL;
+            }
         }
         return ans;
     }
