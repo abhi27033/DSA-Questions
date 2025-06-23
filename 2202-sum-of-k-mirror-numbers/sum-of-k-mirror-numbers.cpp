@@ -40,6 +40,7 @@ bool check(long long num,int k){
             }
             for(int num=digit;num<digit*10;num++){
                 if(n==0)return ans;
+                //decimal numbers phir even length ke check karo
                 long long palindrome=gen_palin(num,0);
                 if(check(palindrome,k))
                 {
