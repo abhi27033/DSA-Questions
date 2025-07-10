@@ -14,15 +14,6 @@ public:
         for(int i=gap.size()-2;i>=0;i--)
         maxSuffix[i]=max(maxSuffix[i+1],gap[i]);
         int ans=0;
-        // for(auto it:gap)
-        // cout<<it<<" ";
-        // cout<<endl;
-        // for(auto it:maxPrefix)
-        // cout<<it<<" ";
-        // cout<<endl;
-        // for(auto it:maxSuffix)
-        // cout<<it<<" ";
-        // cout<<endl;
         for(int i=0;i<n;i++){
             int left=0,right=0;
             if(i>0)
