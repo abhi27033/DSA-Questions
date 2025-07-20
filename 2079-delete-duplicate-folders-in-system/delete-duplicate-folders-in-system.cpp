@@ -2,9 +2,11 @@ class Trie{
 public:
     unordered_map<string,Trie*> mp;
     bool deleteChild;
+    string hash;
     Trie(){
         mp.clear();
         deleteChild=false;
+        hash="";
     }
     void insert(vector<string>& path){
         Trie* current=this;
@@ -32,25 +34,26 @@ public:
         concHash+=hash;
         if(concHash!="")
         hashCount[concHash]++;
+        ptr->hash=concHash;
         return concHash;
     }
-    string hashCalcbelow(Trie* ptr){
-        vector<string> childHash;
-        for(auto child:ptr->mp){
-            string folderName=child.first;
-            Trie* children=child.second;
-            string hash=hashCalcbelow(children);
-            string finalHash=folderName+'('+hash+')';
-            childHash.push_back(finalHash);
-        }
-        sort(childHash.begin(),childHash.end());
-        string concHash="";
-        for(auto hash:childHash)
-        concHash+=hash;
-        return concHash;
-    }
+    // string hashCalcbelow(Trie* ptr){
+    //     vector<string> childHash;
+    //     for(auto child:ptr->mp){
+    //         string folderName=child.first;
+    //         Trie* children=child.second;
+    //         string hash=hashCalcbelow(children);
+    //         string finalHash=folderName+'('+hash+')';
+    //         childHash.push_back(finalHash);
+    //     }
+    //     sort(childHash.begin(),childHash.end());
+    //     string concHash="";
+    //     for(auto hash:childHash)
+    //     concHash+=hash;
+    //     return concHash;
+    // }
     void markNodes(Trie* ptr,unordered_map<string,int>& hashCount){
-        string hash=hashCalcbelow(ptr);
+        string hash=ptr->hash;
         if(hash!=""&&hashCount[hash]>1)
         {
             ptr->deleteChild=true;
