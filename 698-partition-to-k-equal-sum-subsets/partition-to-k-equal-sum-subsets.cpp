@@ -6,7 +6,7 @@ bool solve(vector<int>& nums,int i,int mask,int k,int cs,int& rs){
     if(cs>rs)return false;
     if(dp[mask]!=-1)return dp[mask];
     if(cs==rs)return dp[mask]=solve(nums,0,mask,k-1,0,rs);
-    for(int st=0;st<nums.size();st++){
+    for(int st=i;st<nums.size();st++){
         if(mask>>st&1)continue;
         if(solve(nums,st+1,mask|(1<<st),k,cs+nums[st],rs))return dp[mask]=true;
     }
