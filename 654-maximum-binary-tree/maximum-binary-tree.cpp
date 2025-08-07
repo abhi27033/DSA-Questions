@@ -14,7 +14,7 @@ public:
 TreeNode* solve(vector<int>& nums,int l,int r){
     if(l>r)return NULL;
     int ma=INT_MIN,maidx=-1;
-    for(int i=l;i<=r;i++){
+    for(int i=l;i<=r;i++){// can do this using segment tree range query maximum
         if(ma<=nums[i]){
             ma=nums[i];
             maidx=i;
