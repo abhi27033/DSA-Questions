@@ -14,7 +14,7 @@ double eval(string &s, int &i) {
             num = eval(s, i); // evaluate sub-expression
         }
         // If operator or closing bracket or end
-        if (!isdigit(c) && c != ' ' || i == s.size() - 1) {
+        if (!isdigit(c) || i == s.size() - 1) {
             if (op == '+') st.push(num);
             else if (op == '-') st.push(-num);
             else if (op == '*') { double t = st.top(); st.pop(); st.push(t * num); }
@@ -88,7 +88,6 @@ bool check(string exp) {
     bool judgePoint24(vector<int>& cards) {
         sort(cards.begin(),cards.end());
         do{
-
             if(solve(cards,0,"",0,1))return true;
         }while(next_permutation(cards.begin(),cards.end()));
         return false;
