@@ -18,9 +18,9 @@ public:
             ti=ii,tj=jj;
             int f=0;
             if(i>=n)
-            sort(q.begin(),q.end());
+                sort(q.begin(),q.end());
             else
-            sort(q.rbegin(),q.rend());
+                sort(q.rbegin(),q.rend());
             while(ti<n&&tj<n)
                 grid[ti++][tj++]=q[f++];
         }
