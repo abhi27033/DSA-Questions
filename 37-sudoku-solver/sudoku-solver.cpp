@@ -13,7 +13,6 @@ bool ispossible(vector<vector<char>>& board,int i,int j, char ch){
 }
     void solve(vector<vector<char>>& board,int i, int j){
         if(i>=9){
-            // for(auto it:board){for(auto itt:it)cout<<itt<<" ";cout<<endl;}
             ans=board;
             return;
         }
