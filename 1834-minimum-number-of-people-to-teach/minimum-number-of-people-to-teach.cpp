@@ -23,13 +23,9 @@ public:
             for(auto itt:languages[it-1])
             langspoken[itt]++;
         }
-        int ma=-1,mai=INT_MIN;
-        for(int i=0;i<=n;i++){
-            if(mai<langspoken[i]){
-                mai=langspoken[i];
-                ma=i;
-            }
-        }
+        int mai=INT_MIN;
+        for(auto it:langspoken)
+            mai=max(mai,it);
         return broke.size()-mai;
     }
 };
