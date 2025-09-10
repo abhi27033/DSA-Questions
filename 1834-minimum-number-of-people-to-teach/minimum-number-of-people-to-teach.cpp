@@ -1,34 +1,51 @@
 class Solution {
 public:
     int minimumTeachings(int n, vector<vector<int>>& languages, vector<vector<int>>& friendships) {
+        int m = languages.size();
+        
+        // Preprocess: store each person's languages in a set
+        vector<unordered_set<int>> know(m);
+        for (int i = 0; i < m; i++) {
+            for (int lang : languages[i]) {
+                know[i].insert(lang);
+            }
+        }
+
+        // Step 1: Find people in "broke" friendships
         unordered_set<int> broke;
-        for(auto it:friendships){
-            unordered_set<int> s1,s2;
-            for(auto itt:languages[it[0]-1])s1.insert(itt);
-            for(auto itt:languages[it[1]-1])s2.insert(itt);
-            int flg=-1;
-            for(auto itt:s1){
-                if(s2.find(itt)!=s2.end()){
-                    flg=1;
+        for (auto &f : friendships) {
+            int u = f[0] - 1, v = f[1] - 1;  // zero-indexed
+            bool ok = false;
+            for (int lang : know[u]) {
+                if (know[v].count(lang)) {
+                    ok = true;
                     break;
                 }
             }
-            if(flg==-1){
-            broke.insert(it[0]);
-            broke.insert(it[1]);
+            if (!ok) {
+                broke.insert(u);
+                broke.insert(v);
             }
         }
-        vector<int> langspoken(n+1,0);
-        for(auto it:broke){
-            for(auto itt:languages[it-1])
-            langspoken[itt]++;
+
+        // If no broke friendships, no need to teach
+        if (broke.empty()) return 0;
+
+        // Step 2: Count for each language, how many in "broke" already know it
+        vector<int> langspoken(n+1, 0);
+        for (int person : broke) {
+            for (int lang : know[person]) {
+                langspoken[lang]++;
+            }
         }
-        int mai=INT_MIN;
-        for(auto it:langspoken)
-            mai=max(mai,it);
-        return broke.size()-mai;
+
+        // Step 3: Find the language with maximum existing speakers in "broke"
+        int best = 0;
+        for (int lang = 1; lang <= n; lang++) {
+            best = max(best, langspoken[lang]);
+        }
+
+        // Step 4: Answer = total broke - already know best language
+        return (int)broke.size() - best;
     }
 };
-// 1 -> 2
-//   -> 3
-// 2 -> 3
